@@ -45,7 +45,7 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
-          if (IsPrime(i % s1 + i % s2 + i % s3))
+          if (s1 * s2 * s3 != 0 && IsPrime(i % s1 + i % s2 + i % s3))
           {
             ofs << s1 << "*" << s2 << "*" << s3 << "|";
             e3 = true;
