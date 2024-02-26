@@ -3,6 +3,14 @@
 #include <cmath>
 using namespace std;
 
+bool IsPrime(int n) 
+{
+  for (int f = 2; f < n; ++f)
+    if (n % f == 0)
+      return false; 
+  return true;
+}
+
 int main()
 {
   ofstream ofs;
@@ -14,11 +22,13 @@ int main()
     
   bool c1 = true;
   bool c2 = true;
+  bool c3 = true;
   for (int i = 0; i < 100; ++i) 
   {
     ofs << i << ":";
     bool e1 = false;
     bool e2 = false;
+    bool e3 = false;
     for (int s1 = 0; s1 < i; ++s1)
     {    
       for (int s2 = 0; s2 < i; ++s2)
@@ -35,22 +45,21 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
+          if (IsPrime(i % s1 + i % s2 + i % s3))
+          {
+            ofs << s1 << "*" << s2 << "*" << s3 << "|";
+            e3 = true;
+          }
         }
       }
     }
-    ofs << e1 << e2 << "/";
+    ofs << e1 << e2 << e3 << "/";
     if (!e1) 
       c1 = false;
     if (!e2) 
       c2 = false;
+    if (!e3) 
+      c3 = false;
   }
-  ofs << c1 << c2;
-}
-
-bool IsPrime(int n) 
-{
-  for (int f = 2; f < n; ++f)
-    if (n % f == 0)
-      return false; 
-  return true;
+  ofs << c1 << c2 << c3;
 }
