@@ -19,7 +19,7 @@ int main()
     cerr << "The file could not be oppened :(\n";
     exit(0);
   }
-  int primary = 100;
+  int primary = 2700;
     
   bool c1 = true;
   bool c2 = true;
