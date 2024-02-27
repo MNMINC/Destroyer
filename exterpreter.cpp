@@ -14,16 +14,17 @@ bool IsPrime(int n)
 int main()
 {
   ofstream ofs;
-  ofs.open("token.txt");
+  ofs.open("token.file");
   if (!ofs){
-    cerr << "File open Error \n";
+    cerr << "The file could not be oppened :(\n";
     exit(0);
   }
+  int primary = 100;
     
   bool c1 = true;
   bool c2 = true;
   bool c3 = true;
-  for (int i = 0; i < 100; ++i) 
+  for (int i = 0; i < primary; ++i) 
   {
     ofs << i << ":";
     bool e1 = false;
@@ -62,4 +63,15 @@ int main()
       c3 = false;
   }
   ofs << c1 << c2 << c3;
+  for (int i = 0; i < primary; ++i)
+  {
+    double chip;
+    do
+    {
+      chip = (rand() % primary);
+    } while (chip == 0);
+    
+    chip = log(2 / (1 / chip + 1) - 1) / -2;
+    ofs << chip;
+  }
 }
