@@ -1,7 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <array>
 using namespace std;
+
+int primary = 10;
 
 bool IsPrime(int n) 
 {
@@ -9,6 +12,34 @@ bool IsPrime(int n)
     if (n % f == 0)
       return false; 
   return true;
+}
+
+bool SharesFactors(int n1, int n2)
+{
+  int factors1[primary];
+  int c = 0;
+  for (int f = 2; f < n1; ++f)
+    if (n1 % f == 0)
+    {
+      factors1[c] = f;
+      c++;
+    }
+
+  int factors2[primary];
+  c = 0;
+  for (int f = 2; f < n2; ++f)
+    if (n2 % f == 0)
+    {
+      factors2[c] = f;
+      c++;
+    }
+
+  for (int f1 = 0; f1 < primary; ++f1)
+    for (int f2 = 0; f2 < primary; ++f2)
+      if (factors1[f1] == factors2[f2])
+        return true;
+  return false;
+
 }
 
 int main()
@@ -19,7 +50,6 @@ int main()
     cerr << "The file could not be oppened :(\n";
     exit(0);
   }
-  int primary = 10;
     
   bool c1 = true;
   bool c2 = true;
@@ -46,7 +76,7 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
-          if (s1 * s2 * s3 != 0 && (i % s1 + i % s2 + i % s3) == i)
+          if (s1 * s2 * s3 != 0 && SharesFactors(i % s1 + i % s2 + i % s3, i))
           {
             ofs << s1 << "*" << s2 << "*" << s3 << "|";
             e3 = true;
