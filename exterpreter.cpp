@@ -19,7 +19,7 @@ int main()
     cerr << "The file could not be oppened :(\n";
     exit(0);
   }
-  int primary = 2700;
+  int primary = 10;
     
   bool c1 = true;
   bool c2 = true;
@@ -46,7 +46,7 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
-          if (s1 * s2 * s3 != 0 && IsPrime(i % s1 + i % s2 + i % s3))
+          if (s1 * s2 * s3 != 0 && (i % s1 + i % s2 + i % s3) == i)
           {
             ofs << s1 << "*" << s2 << "*" << s3 << "|";
             e3 = true;
@@ -63,7 +63,7 @@ int main()
       c3 = false;
   }
   ofs << c1 << c2 << c3;
-  for (int i = 0; i < primary; ++i)
+  /*for (int i = 0; i < primary; ++i)
   {
     double chip;
     do
@@ -73,5 +73,5 @@ int main()
     
     chip = log(2 / (1 / chip + 1) - 1) / -2;
     ofs << chip;
-  }
+  }*/
 }
