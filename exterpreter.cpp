@@ -17,6 +17,11 @@ bool IsPrime(int n)
 bool SharesFactors(int n1, int n2)
 {
   int factors1[primary];
+  int factors2[primary];
+  for(int i = 0; i < primary; i++) {
+    factors1[i] = 0;
+    factors2[i] = 0;
+  }
   int c = 0;
   for (int f = 2; f < n1; ++f)
     if (n1 % f == 0)
@@ -25,7 +30,6 @@ bool SharesFactors(int n1, int n2)
       c++;
     }
 
-  int factors2[primary];
   c = 0;
   for (int f = 2; f < n2; ++f)
     if (n2 % f == 0)
@@ -36,7 +40,7 @@ bool SharesFactors(int n1, int n2)
 
   for (int f1 = 0; f1 < primary; ++f1)
     for (int f2 = 0; f2 < primary; ++f2)
-      if (factors1[f1] == factors2[f2])
+      if (factors1[f1] == factors2[f2] && factors1[f1] != 0 && factors1[f1] != 1)
         return true;
   return false;
 
