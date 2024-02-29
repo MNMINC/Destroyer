@@ -80,7 +80,7 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
-          if (s1 * s2 * s3 != 0 && SharesFactors((s1 * s2 * s3) % i, i))
+          if (!SharesFactors(s1 * s2 * s3, i) && SharesFactors(i % s1 * i % s2 * i % s3, 1))
           {
             ofs << s1 << "*" << s2 << "*" << s3 << "|";
             e3 = true;
