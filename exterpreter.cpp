@@ -4,7 +4,7 @@
 #include <array>
 using namespace std;
 
-int primary = 10;
+int primary = 20;
 
 bool IsPrime(int n) 
 {
@@ -80,7 +80,7 @@ int main()
             ofs << s1 << "-" << s2 << "-" << s3 << "|";
             e2 = true;
           }
-          if (s1 * s2 * s3 != 0 && SharesFactors(i % s1 + i % s2 + i % s3, i))
+          if (s1 * s2 * s3 != 0 && SharesFactors((s1 * s2 * s3) % i, i))
           {
             ofs << s1 << "*" << s2 << "*" << s3 << "|";
             e3 = true;
